@@ -1,0 +1,5 @@
+xfsudo - run graphical applications as superuser using sudo
+xfsu - run graphical applications as root using sudo -i
+
+Requires-
+zenity (https://wiki.gnome.org/Projects/Zenity)
