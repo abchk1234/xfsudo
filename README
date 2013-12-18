@@ -3,3 +3,6 @@ xfsu - run graphical applications as root using sudo -i
 
 Requires-
 zenity (https://wiki.gnome.org/Projects/Zenity)
+
+Note- For this to work you need to put your user in the
+sudoers file (see "man visudo").
