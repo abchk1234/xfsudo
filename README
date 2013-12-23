@@ -13,7 +13,7 @@ Install it as:
 
 sudo make install
 
-For Slackware users check out <a href="http://slackbuilds.org/repository/14.1/system/xfsudo/">xfsudo</a> at <a href="http://slackbuilds.org/">slackbuilds.org</a>
+For Slackware users check out http://slackbuilds.org/repository/14.1/system/xfsudo/
 
-For Arch Linux users check out <a href="https://aur.archlinux.org/packages/xfsudo/">xfsudo</a> in the <a href="https://aur.archlinux.org/">Arch User Repository</a>
+For Arch Linux users check out https://aur.archlinux.org/packages/xfsudo/
 
