@@ -7,10 +7,7 @@ zenity (https://wiki.gnome.org/Projects/Zenity)
 Note- For this to work you need to put your user in the
 sudoers file (see "man visudo").
 
-## Installation
-
-Install it as:
-
+Install it as-
 sudo make install
 
 For Slackware users check out http://slackbuilds.org/repository/14.1/system/xfsudo/
