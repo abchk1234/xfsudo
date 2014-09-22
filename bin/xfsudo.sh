@@ -11,7 +11,7 @@ if [ -f /etc/xfsudo.conf ]; then
 fi
 
 # Get the password
-pass="$(zenity --title='xfsudo' --password)"
+pass=$(zenity --title='xfsudo' --password) || exit 1
 
 # Check if password is empty
 if [ "$pass" == "" ]; then
@@ -20,9 +20,10 @@ fi
 
 # Pass the password and command-line arguments to sudo
 if [ "$mode" == "sudo" ]; then
-	echo "$pass" | sudo -Sk env HOME=$HOME "$@" || $(zenity --title='xfsudo' --error --text='Incorrect password entered')
+	echo "$pass" | sudo -Sk env HOME=$HOME "$@" || $(zenity --title='xfsudo' --error --text='Incorrect password entered') && exit 1
 else
-	echo "$pass" | sudo -Sik "$@" || $(zenity --title='xfsudo' --error --text='Incorrect password entered')
+	echo "$pass" | sudo -Sik "$@" || $(zenity --title='xfsudo' --error --text='Incorrect password entered') && exit 1
 fi
 
+# Exit without error
 exit 0
