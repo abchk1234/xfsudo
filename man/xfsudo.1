@@ -1,0 +1,24 @@
+.\" Manpage for xfsudo.
+.\" Contact aaditya_gnulinux@zoho.com.
+.TH man 1 "21 Sep 2014" "0.5" "xfsudo man page"
+.SH NAME
+xfsudo \- run graphical applications with root priviliges using sudo
+.SH SYNOPSIS
+xfsudo [program]
+.SH DESCRIPTION
+xfsudo runs graphical applications as superuser using sudo.
+Zenity is used to display the dialog boxes.
+
+By default it runs in the sudo mode, ie, run apps with root priviliges, 
+but with user's environment variables.
+
+To run instead with root's environment variables, select the root mode
+in the config file /etc/xfsudo.conf
+
+.SH OPTIONS
+The xfsudo command does not take any options. 
+Only the program to be executed and its options are specified.
+.SH EXAMPLES
+xfsudo thunar
+.SH SEE ALSO
+sudo(8), visudo(8)

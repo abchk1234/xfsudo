@@ -1,5 +1,4 @@
-xfsudo - run graphical applications as superuser using sudo
-xfsu - run graphical applications as root using sudo -i
+xfsudo - run graphical applications with root priviliges using sudo
 
 Requires-
 zenity (https://wiki.gnome.org/Projects/Zenity)
@@ -10,7 +9,7 @@ sudoers file (see "man visudo").
 Install it as-
 sudo make install
 
-For Slackware users check out http://slackbuilds.org/repository/14.1/system/xfsudo/
+For Slackware users, available at SBo- http://slackbuilds.org/repository/14.1/system/xfsudo/
 
-For Arch Linux users check out https://aur.archlinux.org/packages/xfsudo/
+For Arch Linux users, available in the AUR- https://aur.archlinux.org/packages/xfsudo/
 

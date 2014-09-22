@@ -1,22 +1,25 @@
+NAME = xfsudo
+VER = 0.5
 SHELL = /bin/bash
-INSTALL = /usr/bin/install -c
+INSTALL = /usr/bin/install
 SED = /bin/sed
 DESTDIR =
-bindir = /usr/bin
-mandir = /usr/share/man/man1/
-appdir = /usr/share/xfsudo
+BINDIR = /usr/bin
+MANDIR = /usr/man/man1
+DOCDIR = /usr/doc/$(NAME)-$(VER)
+CONDIR = /etc
 
 all:
 
 install: all
-	$(INSTALL) -d $(DESTDIR)$(bindir)
-	$(INSTALL) -d $(DESTDIR)$(mandir)
-	$(INSTALL) -d $(DESTDIR)$(appdir)
-	$(INSTALL) -m755 bin/xfsudo $(DESTDIR)$(bindir)
-	$(INSTALL) -m755 bin/xfsu $(DESTDIR)$(bindir)
-	$(INSTALL) -m644 man/xfsudo.1.gz $(DESTDIR)$(mandir)
-	$(INSTALL) -m644 man/xfsu.1.gz $(DESTDIR)$(mandir)
-	$(INSTALL) -m644 README $(DESTDIR)$(appdir)
-	$(INSTALL) -m644 COPYING $(DESTDIR)$(appdir)
+	$(INSTALL) -d $(DESTDIR)$(BINDIR)
+	$(INSTALL) -d $(DESTDIR)$(MANDIR)
+	$(INSTALL) -d $(DESTDIR)$(DOCDIR)
+	$(INSTALL) -d $(DESTDIR)$(CONDIR)
+	$(INSTALL) -m755 bin/xfsudo $(DESTDIR)$(BINDIR)
+	$(INSTALL) -m644 etc/xfsudo.conf $(DESTDIR)$(CONDIR)
+	$(INSTALL) -m644 man/xfsudo.1 $(DESTDIR)$(MANDIR)
+	$(INSTALL) -m644 README $(DESTDIR)$(DOCDIR)
+	$(INSTALL) -m644 COPYING $(DESTDIR)$(DOCDIR)
 
 

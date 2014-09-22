@@ -1,7 +1,0 @@
-#!/bin/bash
-pass="$(zenity --title='xfsu' --password)"
-if [ ! "$pass" == "" ]; then
-	echo "$pass" | sudo -Sik "$@"
-else
-	exit 1
-fi
