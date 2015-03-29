@@ -1,5 +1,5 @@
 NAME = xfsudo
-VER = 0.5
+VER = 0.5.1
 SHELL = /bin/bash
 INSTALL = /usr/bin/install
 SED = /bin/sed
@@ -8,6 +8,7 @@ BINDIR = /usr/bin
 MANDIR = /usr/man/man1
 DOCDIR = /usr/doc/$(NAME)-$(VER)
 CONDIR = /etc
+RM = /usr/bin/rm
 
 all:
 
@@ -22,4 +23,8 @@ install: all
 	$(INSTALL) -m644 README $(DESTDIR)$(DOCDIR)
 	$(INSTALL) -m644 COPYING $(DESTDIR)$(DOCDIR)
 
-
+uninstall:
+	$(RM) $(DESTDIR)$(BINDIR)/xfsudo
+	$(RM) $(DESTDIR)$(CONDIR)/xfsudo.conf
+	$(RM) $(DESTDIR)$(MANDIR)/xfsudo.1
+	$(RM) -r $(DESTDIR)$(DOCDIR)
