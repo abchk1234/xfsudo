@@ -6,12 +6,12 @@ xfsudo - runs graphical applications with root priviliges using sudo.
 
 ## Note
 
-For it to work you need to put your user in the sudoers file (see "man visudo").
+For it to work you need to put your user in the sudoers file (see ```man visudo```).
 
 ## Installation
 
 ~~~~
-## make install
+# make install
 ~~~~
 
 For Slackware users, available at SBo:
