@@ -1,17 +1,17 @@
-xfsudo - run graphical applications with root priviliges using sudo
+xfsudo - runs graphical applications with root priviliges using sudo.
 
-# Requires
+## Requires
 
 * zenity (https://wiki.gnome.org/Projects/Zenity)
 
-# Note
+## Note
 
 For it to work you need to put your user in the sudoers file (see "man visudo").
 
-# Installation
+## Installation
 
 ~~~~
-# make install
+## make install
 ~~~~
 
 For Slackware users, available at SBo:
