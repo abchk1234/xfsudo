@@ -17,6 +17,7 @@ install: all
 	$(INSTALL) -m755 bin/xfsudo.sh $(DESTDIR)$(BINDIR)/xfsudo
 	$(INSTALL) -m755 bin/xfsudo.sh $(DESTDIR)$(BINDIR)/xfsu
 	$(INSTALL) -m644 man/xfsudo.8 $(DESTDIR)$(MANDIR)
+	$(INSTALL) -m644 man/xfsudo.8 $(DESTDIR)$(MANDIR)/xfsu.8
 	$(INSTALL) -m644 README $(DESTDIR)$(DOCDIR)
 	$(INSTALL) -m644 COPYING $(DESTDIR)$(DOCDIR)
 
@@ -24,4 +25,5 @@ uninstall:
 	$(RM) $(DESTDIR)$(BINDIR)/xfsudo
 	$(RM) $(DESTDIR)$(BINDIR)/xfsu
 	$(RM) $(DESTDIR)$(MANDIR)/xfsudo.8
+	$(RM) $(DESTDIR)$(MANDIR)/xfsu.8
 	$(RM) -r $(DESTDIR)$(DOCDIR)
