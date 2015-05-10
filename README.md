@@ -1,4 +1,4 @@
-xfsudo - runs graphical applications with root priviliges using sudo.
+xfsudo - runs graphical applications with root privileges using sudo.
 
 ## Requires
 
