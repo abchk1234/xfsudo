@@ -15,15 +15,22 @@ pass=$(zenity --title='xfsudo' --password) || exit 1
 
 # Check if password is empty
 if [ -z "$pass" ]; then
-	$(zenity --title='xfsudo' --error --text='Password not entered') && exit 1
+	zenity --title='xfsudo' --error --text='Password not entered'
+	exit 1
+fi
+
+# Check if command line argument specified or not
+if [ -z "$1" ]; then
+	zenity --title='xfsudo' --error --text='No program specified'
+	exit 1
 fi
 
 # Pass the password and command-line arguments to sudo
 if [ "$mode" = sudo ]; then
-	echo "$pass" | sudo -p "" -Sk env HOME=$HOME "$@" || $(zenity --title='xfsudo' --error --text='Incorrect password entered') && exit 1
+	echo "$pass" | sudo -p "" -Sk env HOME="$HOME" "$@" >/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
 else
-	echo "$pass" | sudo -p "" -Sik "$@" || $(zenity --title='xfsudo' --error --text='Incorrect password entered') && exit 1
+	echo "$pass" | sudo -p "" -Sik "$@" >/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
 fi
 
-# Exit without error
-exit 0
+# Done
+exit $?
