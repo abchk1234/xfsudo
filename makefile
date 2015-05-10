@@ -1,5 +1,5 @@
 NAME = xfsudo
-VER = 0.5.1
+VER = 0.6
 SHELL = /bin/bash
 INSTALL = /usr/bin/install
 SED = /bin/sed

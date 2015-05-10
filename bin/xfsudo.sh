@@ -10,14 +10,13 @@ if [ -f /etc/xfsudo.conf ]; then
 	source /etc/xfsudo.conf
 fi
 
+# Config file which can override above defaults
+if [ -e "$HOME/.xfsudo.conf" ]; then
+	source "$HOME/.xfsudo.conf"
+fi
+
 # Get the password
 pass=$(zenity --title='xfsudo' --password) || exit 1
-
-# Check if password is empty
-if [ -z "$pass" ]; then
-	zenity --title='xfsudo' --error --text='Password not entered'
-	exit 1
-fi
 
 # Check if command line argument specified or not
 if [ -z "$1" ]; then
