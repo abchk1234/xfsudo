@@ -16,8 +16,14 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
+# Check for -h option
+if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
+	echo "Usage: $PRGNAME <program>"
+	exit 1
+fi
+
 # Check if the program called exists
-if ! type -p "$1" >/dev/null; then
+if ! type -p "$1" &>/dev/null; then
 	zenity --title='xfsudo' --error --text='Non existing program specified'
 	exit 1
 fi
@@ -27,9 +33,9 @@ PASS=$(zenity --title='xfsudo' --password) || exit 1
 
 # Pass the password and command-line arguments to sudo
 if [ "$MODE" = as_sudo ]; then
-	echo "$PASS" | sudo -p "" -Sk env HOME="$HOME" "$@" >/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
+	echo "$PASS" | sudo -p "" -Sk env HOME="$HOME" "$@" &>/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
 else
-	echo "$PASS" | sudo -p "" -Sik "$@" >/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
+	echo "$PASS" | sudo -p "" -Sik "$@" &>/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
 fi
 
 # Done
