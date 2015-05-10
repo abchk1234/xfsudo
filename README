@@ -13,7 +13,3 @@ For Slackware users, available at SBo- http://slackbuilds.org/repository/14.1/sy
 
 For Arch Linux users, available in the AUR- https://aur.archlinux.org/packages/xfsudo/
 
-Difference in version 0.5-
-xfsu functionality moved in xfsudo, and controlled by a config file.
-If you want split binaries as xfsu and xfsudo, please file a bug report.
-

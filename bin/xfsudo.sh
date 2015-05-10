@@ -1,22 +1,14 @@
 #!/bin/bash
 # xfsudo: run as root using sudo
 
-## Default mode
-mode=sudo  # run with root priviliges and user's environment variables
-#mode=root  # run with root priviliges and root's environment variables
+PRGNAME=$(basename "$0")
 
-# Config file which will override above setting
-if [ -f /etc/xfsudo.conf ]; then
-	source /etc/xfsudo.conf
+# Check which mode to operate in based upon which name we were called as.
+if [ "$PRGNAME" = xfsu ]; then
+	MODE=as_root  # run with root priviliges and root's environment variables
+else
+	MODE=as_sudo  # run with root priviliges and user's environment variables
 fi
-
-# Config file which can override above defaults
-if [ -e "$HOME/.xfsudo.conf" ]; then
-	source "$HOME/.xfsudo.conf"
-fi
-
-# Get the password
-pass=$(zenity --title='xfsudo' --password) || exit 1
 
 # Check if command line argument specified or not
 if [ -z "$1" ]; then
@@ -24,11 +16,20 @@ if [ -z "$1" ]; then
 	exit 1
 fi
 
+# Check if the program called exists
+if ! type -p "$1" >/dev/null; then
+	zenity --title='xfsudo' --error --text='Non existing program specified'
+	exit 1
+fi
+
+# Get the password
+PASS=$(zenity --title='xfsudo' --password) || exit 1
+
 # Pass the password and command-line arguments to sudo
-if [ "$mode" = sudo ]; then
-	echo "$pass" | sudo -p "" -Sk env HOME="$HOME" "$@" >/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
+if [ "$MODE" = as_sudo ]; then
+	echo "$PASS" | sudo -p "" -Sk env HOME="$HOME" "$@" >/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
 else
-	echo "$pass" | sudo -p "" -Sik "$@" >/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
+	echo "$PASS" | sudo -p "" -Sik "$@" >/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
 fi
 
 # Done
