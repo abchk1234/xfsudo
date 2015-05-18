@@ -23,10 +23,10 @@ if [ "$1" = "-h" ] || [ "$1" = "--help" ]; then
 fi
 
 # Check if the program called exists
-if ! type -p "$1" &>/dev/null; then
-	zenity --title='xfsudo' --error --text='Non existing program specified'
-	exit 1
-fi
+#if ! type -p "$1" &>/dev/null; then
+#	zenity --title='xfsudo' --error --text='Non existing program specified'
+#	exit 1
+#fi
 
 # Get the password
 PASS=$(zenity --title='xfsudo' --password) || exit 1
