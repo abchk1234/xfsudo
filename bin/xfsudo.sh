@@ -31,11 +31,16 @@ fi
 # Get the password
 PASS=$(zenity --title='xfsudo' --password) || exit 1
 
+flag=0
 # Pass the password and command-line arguments to sudo
 if [ "$MODE" = as_sudo ]; then
-	echo "$PASS" | sudo -p "" -Sk env HOME="$HOME" "$*" &>/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
+	echo "$PASS" | sudo -p "" -Sk env HOME="$HOME" "$*" 2>&1 >/dev/null | grep "incorrect password" && flag=1
 else
-	echo "$PASS" | sudo -p "" -Sik "$*" &>/dev/null || zenity --title='xfsudo' --error --text='Incorrect password entered'
+	echo "$PASS" | sudo -p "" -Sik "$*" 2>&1 >/dev/null | grep "incorrect password" && flag=1
+fi
+
+if [ "$flag" -eq 1 ]; then
+	zenity --title='xfsudo' --error --text='Incorrect password entered'
 fi
 
 # Done
