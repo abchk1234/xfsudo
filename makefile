@@ -1,5 +1,5 @@
 NAME = xfsudo
-VER = 0.7
+VER = 0.7.1
 SHELL = /bin/bash
 INSTALL = /usr/bin/install
 DESTDIR =
